@@ -1,0 +1,51 @@
+html {
+    font-size: var(--font-size-df); //1rem= 10px;
+
+    body {
+        max-width: var(--max-width-page);
+        width: 100%;
+        font-family: pr;
+        margin: auto;
+        letter-spacing: var(--letter-spacing-body);
+        line-height: var(--line-height-body);
+        font-size: var(--font-size-body);
+        color: var(--gray-cl);  
+        scroll-behavior: smooth;
+        position: relative;
+
+        .container {
+            width: 100%;
+            max-width: var(--container-mwidth);
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 var(--container-pdLR);
+            position: relative;
+        }
+        
+        .container-fluid {
+            width: var(--container-fluid-width);
+            max-width: var(--container-fluid-mwidth);
+            padding: 0 var(--container-fluid-pdLR);
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+        }
+
+        main {
+            position: relative;
+
+            section {
+                &.--ptb{
+                    padding: var(--section-pdTB) 0;
+                }
+                &.--pt{
+                    padding-top: var(--section-pdTB);
+                }
+                &.--pb{
+                    padding-bottom: var(--section-pdTB);
+                }
+                
+            }
+        }
+    }
+}

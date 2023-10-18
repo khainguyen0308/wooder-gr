@@ -1,0 +1,242 @@
+// Mixins Breakpoint
+// Laptop lớn, screen <= 1440 px
+@mixin lg {
+    @media screen and (max-width: 1440px) {
+        @content;
+    }
+}
+// Laptop nhỏ hoặc Tablet lớn, screen < 1200px
+@mixin md {
+    @media screen and (max-width: 1199.98px) {
+        @content;
+    }
+}
+// Tablet vừa, screen < 992px
+@mixin sm {
+    @media screen and (max-width: 991.98px) {
+        @content;
+    }
+}
+// Tablet nhỏ hoặc Phones quay ngang, screen < 768px
+@mixin xs {
+    @media screen and (max-width: 767.98px) {
+        @content;
+    }
+}
+// Phone lớn, screen < 576px
+@mixin xxs {
+    @media screen and (max-width: 575.98px) {
+        @content;
+    }
+}
+// Phones nhỏ, screen < 376px
+@mixin xxxs {
+    @media screen and (max-width: 375.98px) {
+        @content;
+    }
+}
+// Landscape
+@mixin landscape {
+    @media screen and (orientation: landscape) {
+        @content;
+    }
+}
+// media max, min
+@mixin maxW($agrs) {
+    @media (max-width: $agrs) {
+        @content;
+    }
+}
+@mixin minW($agrs) {
+    @media (min-width: $agrs) {
+        @content;
+    }
+}@mixin maxH($agrs) {
+    @media (max-height: $agrs) {
+        @content;
+    }
+}
+@mixin minH($agrs) {
+    @media (min-height: $agrs) {
+        @content;
+    }
+}
+
+// CSS animation - transition
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }
+    @-ms-keyframes #{$animation-name} {
+        @content;
+    }
+    @-o-keyframes #{$animation-name} {
+        @content;
+    }
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+
+@mixin animation($str) {
+    animation: #{$str};
+    -webkit-animation: #{$str};
+    -moz-animation: #{$str};
+    -ms-animation: #{$str};
+    -o-animation: #{$str};
+}
+
+@mixin animation-delay($str) {
+    animation-delay: #{$str};
+    -webkit-animation-deplay: #{$str};
+    -moz-animation-deplay: #{$str};
+    -ms-animation-deplay: #{$str};
+    -o-animation-deplay: #{$str};
+}
+
+@mixin transform($str) {
+    transform: #{$str};
+    -webkit-transform: #{$str};
+    -moz-transform: #{$str};
+    -ms-transform: #{$str};
+    -o-transform: #{$str};
+}
+
+@mixin transform-origin($str) {
+    transform-origin: #{$str};
+    -webkit-transform-origin: #{$str};
+    -moz-transform-origin: #{$str};
+    -ms-transform-origin: #{$str};
+    -o-transform-origin: #{$str};
+}
+
+@mixin transition($str) {
+    transition: #{$str};
+    -webkit-transition: #{$str};
+    -moz-transition: #{$str};
+    -ms-transition: #{$str};
+    -o-transition: #{$str};
+}
+
+@mixin transition-delay($str) {
+    transition: #{$str};
+    -webkit-transition-delay: #{$str};
+    -moz-transition-delay: #{$str};
+    -ms-transition-delay: #{$str};
+    -o-transition-delay: #{$str};
+}
+
+// Full Screen
+@mixin fullscreen($fixed: false) {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    @if $fixed {
+        position: fixed;
+    } @else {
+        position: absolute;
+    }
+}
+
+// Visible
+@mixin visible($param: 1) {
+    @if $param == 1 {
+        opacity: 1;
+        pointer-events: auto;
+    } @else {
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+
+// Border Radius
+@mixin br($radius) {
+    border-radius: $radius;
+    background-clip: padding-box;
+}
+
+// Size Div
+@mixin size($w, $h: $w, $circle: false) {
+    width: $w;
+    height: $h;
+    @if $circle {
+        border-radius: 100%;
+    } 
+}
+
+// Customize Scroll Bar
+@mixin customscroll($width:5px, $bgTrack:#ddd, $bgThumb: #121212) {
+    &::-webkit-scrollbar {
+        width: $width;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: $bgTrack;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $bgThumb;
+    }
+}
+
+// Xu ly tran dong
+@mixin fixOver($line) {
+    display: -webkit-box;
+    -webkit-line-clamp: $line;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@mixin midflex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// mid Absoulute
+@mixin midabs {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin rectangle-left {
+    content: '';
+    background: var(--yellow-cl, #BEA67C);
+    width: 58px;
+    height: 5px;
+    position: absolute;
+    top: calc(50% - 5px);
+    left: -72px;
+}
+
+@mixin rectangle-right {
+    content: '';
+    background: var(--yellow-cl, #BEA67C);
+    width: 58px;
+    height: 5px;
+    position: absolute;
+    top: calc(50% - 5px);
+    right: -68px;
+}
+
+// Xu ly khung
+@mixin aspRatio($w,$h) {
+    aspect-ratio: #{$w} / #{$h};
+    display: block;
+    overflow: hidden;
+}
+
+// Hinh trong tam
+@mixin centerImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+

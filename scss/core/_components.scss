@@ -1,0 +1,187 @@
+.heading {
+    font-family: pb;
+    text-transform: uppercase;
+}
+.--lv1 {
+    font-size: var(--font-size-lv1);
+    line-height: var(--line-height-lv1);
+    letter-spacing: var(--letter-spacing-lv1);
+    color: var(--yellow-cl);
+}
+
+.--lv2 {
+    font-size: var(--font-size-lv2);
+    line-height: var(--line-height-lv2);
+    letter-spacing: var(--letter-spacing-lv2);
+    color: var(--black-cl);
+    margin-bottom: 10px;
+}
+
+.--lv3 {
+    color: var(--Black, #000);
+    font-family: pb;
+    font-size: var(--font-size-lv3);
+    line-height: var(--line-height-lv3);
+    letter-spacing: var(--letter-spacing-lv3);
+    text-transform: uppercase;
+}
+
+.btn {
+    font-family: pb;
+    font-size: var(--font-size-textbtn);
+    line-height: var(--line-height-textbtn);
+    letter-spacing: var(--letter-spacing-textbtn);
+    text-transform: uppercase;
+    color: var(--black-cl);
+    cursor: pointer;
+    display: inline-block;
+}
+
+.btn-while {
+    padding: 0 34px;
+    border: 1px solid var(--while-cl, #FFF);
+    height: var(--btn-height);
+    width: max-content;
+    display: flex;
+    align-items: center;
+    @include transition(var(--time-transition));
+}
+
+.btn-while:hover {
+    background: var(--yellow-cl, #BEA67C);
+}
+
+.btn-learn {
+    margin-top: 26px;
+}
+.btn-learn::after {
+    content: '';
+    width: 30px;
+    height: 2px;
+    display: block;
+    background: var(--yellow-cl);
+    margin-top: 4px;
+}
+
+.btn-learn:hover .icon-learn {
+    @include keyframes(moveRight){
+        from {
+            @include transform(translateX(0));
+        }
+        to {
+            @include transform(translateX(10px));
+        }
+    }
+    @include animation(moveRight 1s both);
+}
+
+// Back to top btn
+.back-to-top {
+    cursor: pointer;
+    height: 35px;
+    width: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--White, #FFF);
+    background: var(--Gray, #464646);
+    position: fixed;
+    right: clamp(var(--container-pdLR), calc((100vw - var(--container-mwidth)) / 2 + var(--container-pdLR)), 9999px);
+    bottom: calc(var(--footer-height) / 2);
+    transform: translateY(50%);
+    visibility: hidden;
+    @include transition(var(--time-transition));
+}
+
+.back-to-top.show {
+    visibility: visible;
+}
+.back-to-top:hover {
+    background-color: var(--yellow-cl);
+}
+
+
+// Pop up
+.popup {
+    
+    background-color: var(--black-cl);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 500;
+    @include fullscreen("true");
+    @include midflex();
+    @include transition(var(--time-transition));
+
+    &__video {
+        height: 80%;
+        width: 80%;
+        max-width: 1200px;
+        position: relative;
+        &-inner {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            border: 4px solid var(--white-cl);
+            @include midabs();
+        }
+        &-close {
+            position: absolute;
+            top: 0;
+            right: 0;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            @include midflex();
+            @include transition(var(--time-transition));
+        }
+        &-close:hover {
+            background-color: var(--yellow-cl);
+        }
+    }
+}
+.popup.show {
+    opacity: 0.9;
+    visibility: visible;
+}
+
+.--while-text{
+    color: var(--white-cl);
+}
+
+.--yellow-text{
+    color: var(--yellow-cl);
+}
+
+@include xs {
+    .--lv2 {
+        margin-bottom: 8px;
+    }
+    // responsive button learn more
+    .btn-learn {
+        margin-top: 23px;
+    }
+    .btn-learn::after {
+        content: '';
+        width: 28px;
+        margin-top: 3px;
+    }
+
+    // responsive button back to top
+    .back-to-top {
+        height: 24px;
+        width: 24px;
+        img {
+            width: 4px;
+        }
+    }
+
+    // responsive popup
+    .popup {
+        padding-bottom: 56.25%;
+        &__video {
+            height: calc(100% - 20px);
+            width: calc(100% - 20px);
+
+        }
+    }
+}

@@ -1,0 +1,44 @@
+.nav {
+    visibility: hidden;
+    position: fixed;
+}
+@include sm {
+    .nav {
+        background-color: var(--black-cl);
+        width: 100vw;
+        height: 100vh;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+        z-index: 99;
+        @include midflex();
+        &__menu {          
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+            li {
+                a{     
+                    padding: 10px 20px;           
+                    @include transition(var(--time-transition) color);
+                    font-size: 2.2rem;
+                    letter-spacing: 0.176rem;
+                }
+                a:hover {
+                    color: var(--yellow-cl);
+                }
+            }
+            
+            .--active {
+                a {
+                    color: var(--yellow-cl);
+                }
+            }
+        }
+    }
+
+    .nav.show {
+        visibility: visible;
+        @include animation (fadeIn 0.5s);
+      }
+}

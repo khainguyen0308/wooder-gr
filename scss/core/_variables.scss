@@ -1,0 +1,129 @@
+:root {
+    //gap 
+    --gap : 28px;
+    --column-grid: 74px;
+
+    // page
+    --max-width-page: 2560px;
+
+    // container-fluid
+    --container-fluid-width: 100%;
+    --container-fluid-mwidth: 1920px;
+    --container-fluid-pdLR: 28px;
+
+    /* container */ 
+    --container-pdLR: 28px;
+    --container-mwidth: calc(1196px + calc(var(--container-pdLR) * 2)); // 1196px + gap*2
+
+    // color
+    --yellow-cl: #BEA67C;
+    --white-cl: #FFFFFF;
+    --black-cl: #000000;
+    --gray-cl: #464646;
+
+    /* font size */
+    // default
+    --font-size-df: 62.5%;
+    // h1
+    --font-size-lv1: 8.4rem;
+    --line-height-lv1: normal;
+    --letter-spacing-lv1: 1.008rem;
+    // h2
+    --font-size-lv2: 4.6rem;
+    --line-height-lv2: 5.6rem;
+    --letter-spacing-lv2: 0.46rem;
+    // h3
+    --font-size-lv3: 1.8rem;
+    --line-height-lv3: 2.4rem;
+    --letter-spacing-lv3: 0.072rem;
+    // body
+    --font-size-body: 1.8rem;
+    --line-height-body: 2.5rem;
+    --letter-spacing-body: .036rem;
+    //textbtn
+    --font-size-textbtn: 1.5rem;
+    --line-height-textbtn: normal;
+    --letter-spacing-textbtn: 0.15rem;
+    //small
+    --font-size-small: 1.4rem;
+    --line-height-small: normal;
+    --letter-spacing-small: 0.056rem;
+
+    /* section  */
+    --section-pdTB: 120px;
+    /* header */
+    --header-height: 90px;
+    // footer
+    --footer-height: 100px;
+    // btn
+    --btn-height: 44px;
+    // time transition
+    --time-transition: 0.3s;
+
+
+    // responsive
+    // screen <= 1440 px
+    @include lg {
+        
+    }
+    // screen < 1200px
+    @include md {
+
+    }
+    // screen < 992px
+    @include sm {
+        --container-mwidth: 960px;
+        --section-pdTB: 90px;
+        --font-size-df: 57.5%;
+        --gap : 25px;
+    }
+    // screen < 768px
+    @include xs {
+        --container-fluid-pdLR: 15px;
+        --container-mwidth: 100%;
+        --container-pdLR: 15px;
+        --section-pdTB: 60px;
+        
+        /* font size */
+        // default
+        --font-size-df: 62.5%;
+        // h1
+        --font-size-lv1: 5.6rem;
+        --line-height-lv1: normal;
+        --letter-spacing-lv1: 0.448rem;
+        // h2
+        --font-size-lv2: 3.8rem;
+        --line-height-lv2: 4.2rem;
+        --letter-spacing-lv2: 0.152rem;
+        // h3
+        --font-size-lv3: 1.6rem;
+        --line-height-lv3: .2rem;
+        --letter-spacing-lv3: 0.064rem;
+        // body
+        --font-size-body: 1.5rem;
+        --line-height-body: 2rem;
+        --letter-spacing-body: 0.06rem;
+        //textbtn
+        --font-size-textbtn: 1.2rem;
+        --line-height-textbtn: normal;
+        --letter-spacing-textbtn: 0.12rem;
+        //small
+        --font-size-small: 1.2rem;
+        --line-height-small: normal;
+        --letter-spacing-small: 0.048rem;
+        // header
+        --header-height: 64px;
+        // footer
+        --footer-height: 92px;
+         // btn
+         --btn-height: 34px;
+    }   
+    // screen < 576px
+    @include xxs {
+
+    }
+    // screen < 376px
+    @include xxxs {
+
+    }
+}
