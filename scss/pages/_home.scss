@@ -415,7 +415,7 @@
     }
 
     &__list {
-        display: grid;
+        display: none;
         gap: var(--gap);
         grid-template-columns: repeat(3, 1fr);
         &-item {
@@ -464,11 +464,15 @@
             }
         }
     }
+    &__list.active {
+        display: grid;
+    }
 }
 
 // section carousel
 .carousel {
     &__img{
+        cursor: grab;
         height: 450px;
         display: flex;
         overflow: hidden;

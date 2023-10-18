@@ -208,3 +208,17 @@ function showPopup () {
     }) 
 }
 showPopup() 
+
+// tab
+function changeTab () {
+    tabs = document.querySelectorAll(".news__tabs-tab")
+    lists = document.querySelectorAll(".news__list")
+    tabs.forEach(tab=>tab.addEventListener('click', function(){
+        tabs.forEach(tab => tab.classList.remove('--active'))
+        tab.classList.add('--active')   
+        lists.forEach (item => item.classList.remove('active'))
+        let idList = this.dataset.tab;
+        document.querySelector('.news__list-' + idList).classList.add('active')
+    }))
+}
+changeTab()
