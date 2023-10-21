@@ -1,3 +1,4 @@
+
 // loading
 function loadPage () {
     let number = document.querySelector('.loading__number');
@@ -17,6 +18,29 @@ function loadPage () {
     })
 }
 loadPage()
+
+// progress-bar
+function progressBar () {
+    const progress = document.querySelector('.progress-bar')
+    document.addEventListener('scroll', function() {
+        let heightBody = this.body.clientHeight - window.innerHeight;
+        let scrollY = window.scrollY;
+        let widthPro = scrollY / heightBody * 100;
+        progress.style.width = `${widthPro}%`;
+    })
+}
+progressBar()
+
+// cursor
+function mouseMove () {
+    document.addEventListener("mousemove", function(e) {
+        const cursor = document.querySelector(".cursor");
+        let xCoord = e.clientX - cursor.clientWidth/2,
+            yCoord = e.clientY - cursor.clientHeight/2; 
+        cursor.style.transform = `translate(${xCoord}px, ${yCoord}px)`
+    }) 
+}
+mouseMove()
 
 //background header ... scroll
 function changeBackground () {
@@ -69,19 +93,29 @@ function selectLang() {
     const curLang = document.querySelector(".header__right-lang-current");
     const innerCur = document.querySelector(".header__right-lang-current span");
     const innerSecs = document.querySelectorAll("#listLang li");
+    
     curLang.addEventListener ('click', function(e) {
         e.stopPropagation();
         dropDown.classList.toggle("--rotate");
         listLang.classList.toggle("show");
-        document.addEventListener("click",function() {
-            listLang.classList.remove("show")
+        function hideSecLang() {
             dropDown.classList.remove("--rotate");
-        })
-        innerSecs.forEach(item => item.addEventListener("click", function() {
-            let temp = item.innerHTML;
-            item.innerHTML = innerCur.innerHTML;
+            listLang.classList.remove("show");
+        }
+         
+        innerSecs.forEach(item => item.addEventListener("click", function(e) {
+            let temp = item.textContent;
+            item.innerHTML = innerCur.textContent;
             innerCur.innerHTML = temp;
         }))
+        document.addEventListener("click",function(e) {
+            hideSecLang()
+        })
+        document.addEventListener('keydown', function(e) {
+            if (e.which == 27) {
+                hideSecLang()
+            }
+        })
     })
 }
 selectLang();
@@ -118,6 +152,13 @@ function toggleNav() {
             hideNav()
         }
     })
+    document.addEventListener('keydown', function(e) {
+        if (e.which == 27) {
+            hideNav()
+            headLogo.classList.remove("show");
+            headLang.classList.remove("show");
+        }
+    }) 
 }
 toggleNav();
 
@@ -222,3 +263,40 @@ function changeTab () {
     }))
 }
 changeTab()
+
+// faq accordion
+function accordion () {
+    const accordion = document.querySelectorAll('.accordion__content');
+    accordion.forEach((item,index) => item.addEventListener('click', function() {
+        item.classList.toggle('--active')
+        accordion.forEach((item2,index2)=>{ 
+            if(index != index2){ 
+                item2.classList.remove("--active");  
+            } 
+        }) 
+    })
+)}
+accordion()
+
+// carousel
+function handleCarousel () {
+    var slider = document.querySelector('.carousel')
+    var flktySlider = new Flickity(
+        slider,
+        {
+            cellAlign: 'left',
+            contain: true,
+            draggable: '>1',
+            prevNextButtons: false,
+            wrapAround: true,
+            pageDots: false,
+            freeScroll: true,
+            lazyLoad: 3
+        }
+    );
+}
+
+// load => handle
+window.addEventListener('load', function() {
+    handleCarousel()
+})

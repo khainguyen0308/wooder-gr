@@ -82,12 +82,17 @@
   </head>
 
   <body>
+    <!-- loading -->
     <div class="loading">
       <div class="loading__outer">
         <div class="loading-inner"></div>
       </div>
       <div class="loading__number"></div>
     </div>
+    <!-- progress bar -->
+    <div class="progress-bar"></div>
+    <!-- cursor mouse -->
+    <div class="cursor"></div>
     <!-- header -->
     <header class="header">
       <div class="container-fluid">
@@ -110,12 +115,12 @@
             <div class="header__right-lang-current">
               <span class="btn --while-text">EN</span>
               <img src="./img/icon-dropdown.svg" alt="" class="dropdown" />
-              <ul class="header__right-lang-select" id="listLang">
-                <li class="btn --while-text">vi</li>
-                <li class="btn --while-text">jp</li>
-                <li class="btn --while-text">au</li>
-              </ul>
             </div>
+            <ul class="header__right-lang-select" id="listLang">
+              <li class="btn --while-text">vi</li>
+              <li class="btn --while-text">jp</li>
+              <li class="btn --while-text">au</li>
+            </ul>
           </div>
           <div class="header__right-btnmenu">
             <span class="hambergur"></span>
@@ -618,14 +623,106 @@
       </section>
       <!-- sc carousel -->
       <section class="carousel --pb">
-        <div class="carousel__img">
-          <img src="./img/carousel-1.jpg" alt="#" />
-          <img src="./img/carousel-2.jpg" alt="#" />
-          <img src="./img/carousel-3.jpg" alt="#" />
-          <img src="./img/carousel-4.jpg" alt="#" />
-        </div>
+        <img src="./img/carousel-1.jpg" alt="#" />
+        <img src="./img/carousel-2.jpg" alt="#" />
+        <img src="./img/carousel-3.jpg" alt="#" />
+        <img src="./img/carousel-4.jpg" alt="#" />
+        <img src="./img/carousel-4.jpg" alt="#" />
+        <img src="./img/carousel-4.jpg" alt="#" />
+        <!-- </div>
         <div class="carousel__progress">
           <div class="carousel__progress-inner"></div>
+        </div> -->
+      </section>
+
+      <!-- sc faq -->
+      <section class="faq --pb">
+        <div class="container">
+          <div class="heading --lv2">questions</div>
+          <div class="faq__list">
+            <div class="accordion">
+              <h3 class="accordion__title --lv3">Information</h3>
+              <div class="accordion__content">
+                <div class="accordion__content-title">
+                  <h4 class="--lv3">
+                    CFD Circle có cam kết đầu ra và việc làm 100% không?
+                  </h4>
+                </div>
+                <div class="accordion__content-text">
+                  CFD Circle không quảng cáo bằng cách cam kết đầu ra 100% để
+                  thu hút học viên. Điều chúng tôi cam kết duy nhất là sẽ đồng
+                  hành, hỗ trợ cho bạn hết mình nhằm truyền đạt và giúp cho tất
+                  cả học viên có thể làm được việc cùng các kỹ năng thực tế cần
+                  có sau khóa học và ứng tuyển ít nhất là vị trí fresher tại các
+                  công ty.
+                </div>
+              </div>
+
+              <div class="accordion__content">
+                <div class="accordion__content-title">
+                  <h4 class="--lv3">
+                    Học tại CFD Circle xong có đi làm hay thực tập được không?
+                  </h4>
+                </div>
+                <div class="accordion__content-text">
+                  Khóa học thực chiến tại CFD Circle giúp học viên trải nghiệm
+                  dự án, quy trình làm việc và kỹ năng thực tế cần có để không
+                  chỉ xin thực tập mà còn có thể ứng tuyển các vị trí chính thức
+                  cao hơn như ở các công ty.
+                </div>
+              </div>
+
+              <div class="accordion__content">
+                <div class="accordion__content-title">
+                  <h4 class="--lv3">
+                    Đăng ký khóa học và thanh toán như thế nào?
+                  </h4>
+                </div>
+                <div class="accordion__content-text">
+                  Bạn đăng ký tài khoản và đăng nhập vào website, chọn khóa học
+                  muốn học, điền đầy đủ thông tin và bấm đăng ký học. Sau khi
+                  đăng ký, hệ thống sẽ gửi email thông tin khoá học đã đăng ký,
+                  mã đơn hàng, thông tin thanh toán.
+                </div>
+              </div>
+            </div>
+            <div class="accordion">
+              <h3 class="accordion__title --lv3">
+                Register, Payments, promotion
+              </h3>
+              <div class="accordion__content">
+                <div class="accordion__content-title">
+                  <h4 class="--lv3">Làm sao để được giảm giá khoá học?</h4>
+                </div>
+                <div class="accordion__content-text">
+                  Đối với khoá học Offline hoặc Online cùng lớp Offline:
+                </div>
+              </div>
+              <div class="accordion__content">
+                <div class="accordion__content-title">
+                  <h4 class="--lv3">
+                    Làm sao để đăng ký làm giảng viên/đối tác hoặc mentor tại
+                    CFD Circle
+                  </h4>
+                </div>
+                <div class="accordion__content-text">
+                  Bạn có thể đăng ký trở thành giảng viên/đối tác nội dung cho
+                  CFD Circle thì vui lòng bấm
+                </div>
+              </div>
+              <div class="accordion__content">
+                <div class="accordion__content-title">
+                  <h4 class="--lv3">
+                    Học viên hoàn thành khoá học có được cấp chứng chỉ không?
+                  </h4>
+                </div>
+                <div class="accordion__content-text">
+                  Sau khu học viên hoàn thành khoá học sẽ được cấp chứng chỉ
+                  hoàn thành khoá học có chữ ký của người sáng lập CFD Circle.
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </main>

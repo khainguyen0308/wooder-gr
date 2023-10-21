@@ -71,6 +71,7 @@
             height: 100%;
             display: flex;
             align-items: center;
+            position: relative;
             &-current {
                 position: relative;
                 height: 100%;
@@ -86,29 +87,34 @@
                 }
                 img.--rotate{
                     transform: rotate(180deg);
-                }
-                .header__right-lang-select {
-                    // display: none;
-                    visibility: hidden;
-                    @include midflex();
-                    position: absolute;
-                    flex-direction: column;
-                    top: var(--header-height);
-                    right: 0;
-                    height: 90px;
-                    background-color: var(--black-cl); 
-                    @include transition(var(--time-transition) color);
-                    li {
-                        padding: 3px 18px;
-                        @include transition(var(--time-transition) color);
-                    }   
-                    li:hover {
-                        color: var(--yellow-cl);
-                    }         
-                }
+                }              
             }
             &-current:hover span {
                 color: var(--yellow-cl);
+            }
+
+            &-select {
+                // display: none;
+                visibility: hidden;
+                @include midflex();
+                position: absolute;
+                flex-direction: column;
+                top: var(--header-height);
+                right: 0;
+                height: 90px;
+                background-color: var(--black-cl); 
+                @include transition(var(--time-transition) color);
+                li {
+                    padding: 3px 18px;
+                    @include transition(var(--time-transition) color);
+                }   
+                li:hover {
+                    color: var(--yellow-cl);
+                }         
+            }
+            &-select.show {
+                visibility: visible;
+                @include animation (fadeIn 0.5s);
             }
         }
         &-btnmenu {
@@ -117,16 +123,8 @@
     }
     
 }
-.header__right-lang-current .show {
-    visibility: visible;
-    @include animation (fadeIn 0.5s);
-  }
+
   
-  /* Add animation (fade in the popup) */
-    @include keyframes (fadeIn) {
-        from {opacity: 0;}
-        to {opacity: 1;}
-    }
 
 .--bg-black {
     background-color: var(--black-cl);
