@@ -24,7 +24,7 @@
         @include midabs();
 
         li {      
-            padding: 40px 20px;
+            padding: 40px 12px;
             a{       
                 position: relative;     
                 @include transition(var(--time-transition));   

@@ -98,16 +98,11 @@ function selectLang() {
         e.stopPropagation();
         dropDown.classList.toggle("--rotate");
         listLang.classList.toggle("show");
+            
         function hideSecLang() {
             dropDown.classList.remove("--rotate");
             listLang.classList.remove("show");
         }
-         
-        innerSecs.forEach(item => item.addEventListener("click", function(e) {
-            let temp = item.textContent;
-            item.innerHTML = innerCur.textContent;
-            innerCur.innerHTML = temp;
-        }))
         document.addEventListener("click",function(e) {
             hideSecLang()
         })
@@ -117,6 +112,12 @@ function selectLang() {
             }
         })
     })
+    innerSecs.forEach(item => item.addEventListener("click", function(e) {
+        let temp = item.textContent;
+        item.innerHTML = innerCur.textContent;
+        innerCur.innerHTML = temp;
+    }))
+    
 }
 selectLang();
 
@@ -163,59 +164,60 @@ function toggleNav() {
 toggleNav();
 
 
-// slide
-window.addEventListener("load", function() {
-    const hero = document.querySelector(".hero");
-    const slider = document.querySelector(".hero__slider");
-    const sliderItem = document.querySelectorAll(".hero__slider-item");
-    const nextBtn = document.querySelector(".--next");
-    const preBtn = document.querySelector(".--pre");
-    const dotItems = document.querySelectorAll(".dotted__item");
-    const sliderItemWidth = sliderItem[0].offsetWidth;
-    const sliderLength = sliderItem.length;
-    const numberCur = document.querySelector(".number__current");
-    let positionX = 0;
-    let index = 1;
+// slide code
+// window.addEventListener("load", function() {
+//     const hero = document.querySelector(".hero");
+//     const slider = document.querySelector(".hero__slider");
+//     const sliderItem = document.querySelectorAll(".hero__slider-item");
+//     const nextBtn = document.querySelector(".--next");
+//     const preBtn = document.querySelector(".--pre");
+//     const dotItems = document.querySelectorAll(".dotted__item");
+//     const sliderItemWidth = sliderItem[0].offsetWidth;
+//     const sliderLength = sliderItem.length;
+//     const numberCur = document.querySelector(".number__current");
+//     let positionX = 0;
+//     let index = 1;
 
-    // dotted
-    dotItems.forEach(item => item.addEventListener("click", function() {
-        dotItems.forEach(e => e.classList.remove("--active"));
-        item.classList.add("--active");
-        indexDotted = parseInt(item.dataset.index);
-        index = indexDotted;
-        slider.style = `transform: translateX(${-1 * (index-1) * sliderItemWidth }px)`;
-        numberCur.innerHTML = index.toString().padStart(2, "0");
-    }))
+//     // dotted
+//     dotItems.forEach(item => item.addEventListener("click", function() {
+//         dotItems.forEach(e => e.classList.remove("--active"));
+//         item.classList.add("--active");
+//         indexDotted = parseInt(item.dataset.index);
+//         index = indexDotted;
+//         slider.style = `transform: translateX(${-1 * (index-1) * sliderItemWidth }px)`;
+//         numberCur.innerHTML = index.toString().padStart(2, "0");
+//     }))
 
-    // next and prev
-    nextBtn.addEventListener("click", function() {
-        handleChangeSlide(1);    
-    })  
-    preBtn.addEventListener("click", function() {
-        handleChangeSlide(-1);    
-    })
+//     // next and prev
+//     nextBtn.addEventListener("click", function() {
+//         handleChangeSlide(1);    
+//     })  
+//     preBtn.addEventListener("click", function() {
+//         handleChangeSlide(-1);    
+//     })
     
-    function handleChangeSlide(direction) {
-        if (direction == 1) {
-            if (index > (sliderLength - 1)) return;
-            index ++;
-            numberCur.innerHTML = index.toString().padStart(2, "0");
-            positionX = -1 * (index-1) * sliderItemWidth ;
-            slider.style = `transform: translateX(${positionX}px)`;
-        }
-        else {
-            if (index < 2) return;
-            index --;
-            numberCur.innerHTML = index.toString().padStart(2, "0");
-            positionX = -1 * (index-1) * sliderItemWidth;
-            slider.style = `transform: translateX(${positionX}px)`;
+//     function handleChangeSlide(direction) {
+//         if (direction == 1) {
+//             if (index > (sliderLength - 1)) return;
+//             index ++;
+//             numberCur.innerHTML = index.toString().padStart(2, "0");
+//             positionX = -1 * (index-1) * sliderItemWidth ;
+//             slider.style = `transform: translateX(${positionX}px)`;
+//         }
+//         else {
+//             if (index < 2) return;
+//             index --;
+//             numberCur.innerHTML = index.toString().padStart(2, "0");
+//             positionX = -1 * (index-1) * sliderItemWidth;
+//             slider.style = `transform: translateX(${positionX}px)`;
 
-        }
+//         }
         
-        [...dotItems].forEach(item => item.classList.remove("--active"));
-        dotItems[index-1].classList.add("--active");
-    }
-})
+//         [...dotItems].forEach(item => item.classList.remove("--active"));
+//         dotItems[index-1].classList.add("--active");
+//     }
+// })
+
 
 // show popup video
 function showPopup () {
@@ -278,15 +280,64 @@ function accordion () {
 )}
 accordion()
 
-// carousel
-function handleCarousel () {
-    var slider = document.querySelector('.carousel')
+// lib
+// // slider flickity
+function handleSlider () {
+    var slider = document.querySelector('.hero__slider')
     var flktySlider = new Flickity(
         slider,
         {
             cellAlign: 'left',
             contain: true,
             draggable: '>1',
+            prevNextButtons: true,
+            wrapAround: true,
+            pageDots: true,
+            groupCells: 1,
+            freeScroll: false,
+            lazyLoad: 3
+        }
+    );
+    // control
+    let nextBtn = document.querySelector(".--next");
+    let preBtn = document.querySelector(".--pre");
+    nextBtn.addEventListener('click', function() {
+        console.log("1")
+        flktySlider.next(true)
+    })
+    preBtn.addEventListener('click', function() {
+        flktySlider.previous(true)
+    })
+}
+handleSlider()
+
+
+// fancybox
+
+    // Fancybox.bind("[data-fancybox = gallery]", {
+    //     // Your custom options
+    //     infinity: false,
+    //     keyboard: {
+    //         Escape: 'close',
+    //         Delete: 'close',
+    //         Backspace: 'close',
+    //         ArrowUp: 'next',
+    //         ArrowDown: 'prev',
+    //         ArrowLeft: 'prev',
+    //         ArrowRight: 'next'
+    //     }
+    // })
+
+// carousel
+function handleCarousel () {
+    var carousel = document.querySelector('.carousel')
+    var flktyCarousel = new Flickity(
+        carousel,
+        {
+            cellAlign: 'left',
+            contain: true,
+            draggable: '>1',
+            accessibility: true,
             prevNextButtons: false,
             wrapAround: true,
             pageDots: false,
@@ -296,7 +347,19 @@ function handleCarousel () {
     );
 }
 
-// load => handle
+// load => handleCarousel, handleSlider
 window.addEventListener('load', function() {
     handleCarousel()
 })
+
+// click menu header
+function handleMenu () {
+    const itemMenus = document.querySelectorAll('.header__menu li')
+    itemMenus.forEach(item => item.addEventListener('click', function() {
+        itemMenus.forEach(item => item.classList.remove('--active'))
+        item.classList.add('--active')
+    }))
+}
+handleMenu()
+
+

@@ -152,58 +152,52 @@
     <main>
       <!-- sc slider -->
       <section class="hero">
-        <div class="hero__wrap-slider">
-          <div class="hero__slider">
-            <div class="hero__slider-item">
-              <div class="textbox">
-                <h2 class="heading --lv1">Wooder</h2>
-                <a href="#" class="btn btn-while --while-text" id="scroll-to"
-                  >Learn more
-                  <img src="./img/icon-arrow-right-white.svg" alt="#"
-                /></a>
-              </div>
-              <picture class="img">
-                <source
-                  media="(max-width:767px)"
-                  srcset="./img/slider-1-m.jpg"
-                />
-                <img src="./img/slider-1.jpg" alt="#" />
-              </picture>
+        <!-- <div class="hero__wrap-slider"> -->
+        <div class="hero__slider" data-flickity>
+          <div class="hero__slider-item">
+            <div class="textbox">
+              <h2 class="heading --lv1">Wooder</h2>
+              <a href="#" class="btn btn-while --while-text" id="scroll-to"
+                >Learn more <img src="./img/icon-arrow-right-white.svg" alt="#"
+              /></a>
             </div>
-            <div class="hero__slider-item">
-              <div class="textbox">
-                <h2 class="heading --lv1">Furniture</h2>
-                <a href="#" class="btn btn-while --while-text"
-                  >Learn more
-                  <img src="./img/icon-arrow-right-white.svg" alt="#"
-                /></a>
-              </div>
-              <picture class="img">
-                <source
-                  media="(max-width: 767px)"
-                  srcset="./img/slider-2-m.jpg"
-                />
-                <img src="./img/slider-2.jpg" alt="#" />
-              </picture>
+            <picture class="img">
+              <source media="(max-width:767px)" srcset="./img/slider-1-m.jpg" />
+              <img src="./img/slider-1.jpg" alt="#" />
+            </picture>
+          </div>
+          <div class="hero__slider-item">
+            <div class="textbox">
+              <h2 class="heading --lv1">Furniture</h2>
+              <a href="#" class="btn btn-while --while-text"
+                >Learn more <img src="./img/icon-arrow-right-white.svg" alt="#"
+              /></a>
             </div>
-            <div class="hero__slider-item">
-              <div class="textbox">
-                <h2 class="heading --lv1">Decor</h2>
-                <a href="#" class="btn btn-while --while-text"
-                  >Learn more
-                  <img src="./img/icon-arrow-right-white.svg" alt="#"
-                /></a>
-              </div>
-              <picture class="img">
-                <source
-                  media="(max-width: 767px)"
-                  srcset="./img/slider-3-m.jpg"
-                />
-                <img src="./img/slider-3.jpg" alt="#" />
-              </picture>
+            <picture class="img">
+              <source
+                media="(max-width: 767px)"
+                srcset="./img/slider-2-m.jpg"
+              />
+              <img src="./img/slider-2.jpg" alt="#" />
+            </picture>
+          </div>
+          <div class="hero__slider-item">
+            <div class="textbox">
+              <h2 class="heading --lv1">Decor</h2>
+              <a href="#" class="btn btn-while --while-text"
+                >Learn more <img src="./img/icon-arrow-right-white.svg" alt="#"
+              /></a>
             </div>
+            <picture class="img">
+              <source
+                media="(max-width: 767px)"
+                srcset="./img/slider-3-m.jpg"
+              />
+              <img src="./img/slider-3.jpg" alt="#" />
+            </picture>
           </div>
         </div>
+        <!-- </div> -->
         <div class="hero__bottom">
           <div class="container-fluid">
             <div class="hero__bottom-paging">
@@ -404,19 +398,39 @@
             </p>
           </div>
           <div class="gallery__list">
-            <a href="#" class="gallery__list-img"
+            <a
+              href="./img/gallery-item1-l.jpg"
+              data-fancybox="gallery"
+              data-caption="Caption #1"
+              class="gallery__list-img"
               ><img src="./img/gallery-item1.jpg" alt="#"
             /></a>
-            <a href="#" class="gallery__list-img"
+            <a
+              href="./img/gallery-item2-l.jpg"
+              data-fancybox="gallery"
+              data-caption="Caption #1"
+              class="gallery__list-img"
               ><img src="./img/gallery-item2.jpg" alt="#"
             /></a>
-            <a href="#" class="gallery__list-img"
+            <a
+              href="./img/gallery-item3-l.jpg"
+              data-fancybox="gallery"
+              data-caption="Caption #1"
+              class="gallery__list-img"
               ><img src="./img/gallery-item3.jpg" alt="#"
             /></a>
-            <a href="#" class="gallery__list-img"
+            <a
+              href="./img/gallery-item4-l.jpg"
+              data-fancybox="gallery"
+              data-caption="Caption #1"
+              class="gallery__list-img"
               ><img src="./img/gallery-item4.jpg" alt="#"
             /></a>
-            <a href="#" class="gallery__list-img"
+            <a
+              href="./img/gallery-item5-l.jpg"
+              data-fancybox="gallery"
+              data-caption="Caption #1"
+              class="gallery__list-img"
               ><img src="./img/gallery-item5.jpg" alt="#"
             /></a>
           </div>
