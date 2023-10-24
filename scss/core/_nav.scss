@@ -18,7 +18,8 @@
             gap: 10px;
             align-items: center;
             li {
-                a{     
+                a{   
+                    color: var(--white-cl);  
                     padding: 10px 20px;           
                     @include transition(var(--time-transition) color);
                     font-size: 2.2rem;
@@ -27,10 +28,7 @@
                 a:hover {
                     color: var(--yellow-cl);
                 }
-            }
-            
-            .--active {
-                a {
+                a.--active {
                     color: var(--yellow-cl);
                 }
             }

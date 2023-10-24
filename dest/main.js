@@ -1,21 +1,39 @@
 
 // loading
 function loadPage () {
-    let number = document.querySelector('.loading__number');
-    let counter = 0;
-    setInterval(()=> {
-        if (counter == 100){
-            clearInterval;
-        } else {
-            counter += 1;
-            number.innerHTML = `${counter}%`;
-        }
-    },20)
-
-    const loading = document.querySelector('.loading');
-    window.addEventListener('load' , function () {
+    function handlePercent (percent) {
+        const perNumber = document.querySelector('.loading__number');
+        const perInner = document.querySelector('.loading-inner')
+        perInner.style.width = `${percent}%`
+        perNumber.textContent = `${percent}%`
+    }  
+    function hideLoading () {
+        const body = document.querySelector('body')
+        const loading = document.querySelector('.loading');
+        body.classList.remove("--disable-body-scroll");
         loading.classList.add('--hide');
+    }
+    // img loaded   
+    const lengthImgs = document.querySelectorAll('img').length
+    let imgsLoaded = new imagesLoaded('body');
+    let count = 0
+    imgsLoaded
+    .on("progress", (instance ) => {
+      count++;
+      let percent = Math.floor((count / lengthImgs) * 100);
+      handlePercent(percent);
     })
+    .on("always", (instance ) => {
+      console.log("ALWAYS - all images have been loaded");
+    })
+    .on("fail", (instance ) => {
+      console.log("FAIL - all images loaded, at least one is broken");
+    })
+    .on("done", (instance ) => {
+      console.log("DONE  - all images have been successfully loaded");
+      hideLoading();
+    })
+    
 }
 loadPage()
 
@@ -41,15 +59,29 @@ function mouseMove () {
     }) 
 }
 mouseMove()
+// cursor active
+function showMouseMove () {
+    const cursor = document.querySelector('.cursor')
+    const elementHovers = document.querySelectorAll('.--hover')
+    elementHovers.forEach(element => element.addEventListener('mouseover', function() {
+        cursor.classList.add('--active')
+        // console.log("test")
+    }))
+    elementHovers.forEach(element => element.addEventListener('mouseout', function() {
+        cursor.classList.remove('--active')
+    }))
+}
+showMouseMove()
 
-//background header ... scroll
+//change background header ... scroll
 function changeBackground () {
     const element = document.getElementById('scroll-to')
     const header = document.querySelector('.header');
+    const heightHeader = document.getElementById("header").offsetHeight
     const elementTop = element.offsetTop;
     const elementHeight = element.offsetHeight;
     let scrollY = window.scrollY;
-    if (scrollY > (elementTop + elementHeight))
+    if (scrollY > (elementTop + elementHeight - heightHeader))
     {
         header.classList.add('--bg-black');
     } else
@@ -57,7 +89,7 @@ function changeBackground () {
             header.classList.remove('--bg-black');
         }
 }
-// backtotop ... scroll
+//show backtotop ... scroll
 function showBacktotop () {
     const btt = document.querySelector('.back-to-top');
     let scrollY = window.scrollY;
@@ -71,7 +103,6 @@ function showBacktotop () {
 }
 
 // scroll -> show background + btt
-
 window.addEventListener('scroll', function () {
     changeBackground();
     showBacktotop();
@@ -81,7 +112,9 @@ window.addEventListener('scroll', function () {
 let backTop = document.querySelector(".back-to-top");
 function topFunction() {
     backTop.addEventListener('click', function(){
-        document.documentElement.scrollTop = 0;
+        window.scrollTo({
+            top: 0
+          });
     })
 }
 topFunction();
@@ -123,6 +156,7 @@ selectLang();
 
 // toggle nav menu
 function toggleNav() {
+    const body = document.querySelector('body')
     const btnMenu = document.querySelector('.header__right-btnmenu') 
     const navMenu = document.querySelector('.nav');
     const headLogo = document.querySelector('.header__logo');
@@ -131,22 +165,24 @@ function toggleNav() {
     const liNav = document.querySelectorAll('.nav .nav__menu li')
     btnMenu.addEventListener('click', function() {
         navMenu.classList.toggle("show");
-        headLogo.classList.toggle("show");
-        headLang.classList.toggle("show");
+        headLogo.classList.toggle("hidden");
+        headLang.classList.toggle("hidden");
         hamburger.classList.toggle("active-menu");
+        body.classList.toggle('--disable-body-scroll')
     })  
-    liNav.forEach (item => item.addEventListener('click', function() {
-        console.log("test")
-        navMenu.classList.toggle("show");
-        headLogo.classList.toggle("show");
-        headLang.classList.toggle("show");
-        hamburger.classList.toggle("active-menu");
-    }))
     // hide nav
     function hideNav() {
         navMenu.classList.remove("show")
         hamburger.classList.remove("active-menu")
+        headLogo.classList.remove("hidden");
+        headLang.classList.remove("hidden");
+        body.classList.remove('--disable-body-scroll')
     }
+
+    liNav.forEach (item => item.addEventListener('click', function() {
+        hideNav()
+    }))
+
     window.addEventListener('resize', function() {
         let wWindow = window.innerWidth
         if (wWindow > 992) {
@@ -155,9 +191,7 @@ function toggleNav() {
     })
     document.addEventListener('keydown', function(e) {
         if (e.which == 27) {
-            hideNav()
-            headLogo.classList.remove("show");
-            headLang.classList.remove("show");
+            hideNav()  
         }
     }) 
 }
@@ -221,6 +255,7 @@ toggleNav();
 
 // show popup video
 function showPopup () {
+    const body = document.querySelector('body')
     const popup = document.querySelector(".popup")
     const btnPlays = document.querySelectorAll("#icon-play")
     const iframeVideo = document.querySelector(".popup__video-inner")
@@ -235,20 +270,25 @@ function showPopup () {
         src="https://www.youtube.com/embed/${id}?autoplay=1" allow="autoplay" frameborder=”0″ allowfullscreen
         ></iframe>`
         popup.classList.add("show")
+        body.classList.add('--disable-body-scroll')
     }))
     // close popup
     function clsPopup() {
         popup.classList.remove("show");
         iframeVideo.innerHTML = "";
+        body.classList.remove('--disable-body-scroll')
     }
     btnClose.addEventListener("click", function() {
+        clsPopup();
+    })
+    popup.addEventListener("click", function() {
         clsPopup();
     })
     document.addEventListener('keydown', function(e) {
         if (e.which == 27) {
             clsPopup();
         }
-    }) 
+    })
 }
 showPopup() 
 
@@ -256,12 +296,12 @@ showPopup()
 function changeTab () {
     tabs = document.querySelectorAll(".news__tabs-tab")
     lists = document.querySelectorAll(".news__list")
-    tabs.forEach(tab=>tab.addEventListener('click', function(){
+    tabs.forEach((tab, index) => tab.addEventListener('click', function(){
+        console.log(index)
         tabs.forEach(tab => tab.classList.remove('--active'))
         tab.classList.add('--active')   
-        lists.forEach (item => item.classList.remove('active'))
-        let idList = this.dataset.tab;
-        document.querySelector('.news__list-' + idList).classList.add('active')
+        lists.forEach (list => list.classList.remove('--active'))
+        lists[index].classList.add('--active')
     }))
 }
 changeTab()
@@ -280,6 +320,67 @@ function accordion () {
 )}
 accordion()
 
+// Handle click menu header = nav
+function handleClickMenu () {
+    const itemMenus = document.querySelectorAll('.item-menu')
+    const itemNavs = document.querySelectorAll('.item-nav')
+    itemMenus.forEach(item => item.addEventListener('click', function(e) {
+        e.preventDefault()
+        itemMenus.forEach(item => item.classList.remove('--active'))
+        item.classList.add('--active')
+        let idSection = item.getAttribute('href')
+        let topSection = document.querySelector(idSection).offsetTop
+        window.scrollTo({
+            top: topSection
+        })
+    }))
+    itemNavs.forEach(item => item.addEventListener('click', function(e) {
+        e.preventDefault()
+        itemNavs.forEach(item => item.classList.remove('--active'))
+        item.classList.add('--active')
+        let idSection = item.getAttribute('href')
+        let topSection = document.querySelector(idSection).offsetTop
+        const heightHeader = document.getElementById("header").offsetHeight
+        window.scrollTo({
+            top: topSection - heightHeader
+        })
+    }))
+}
+handleClickMenu()
+
+// scroll to section
+function scrollSection () {
+    const itemMenus = document.querySelectorAll('.item-menu')
+    const itemNavs = document.querySelectorAll('.item-nav')
+    const sections = document.querySelectorAll('section')
+    const heightHeader = document.getElementById("header").offsetHeight
+    
+    window.addEventListener('scroll', function() {
+        sections.forEach(section => {
+            let scrollY = window.scrollY
+            let topSection = section.offsetTop
+            let heightSection = section.offsetHeight
+            let idCurrent = section.getAttribute('id')
+            if (scrollY >= topSection - heightHeader && scrollY < topSection + heightSection - heightHeader) {
+                if (idCurrent != null){
+                    itemMenus.forEach(menu => {
+                        menu.classList.remove("--active")
+                        document.querySelector(".item-menu[href*="+ idCurrent + "]").classList.add('--active')
+                    }) 
+                    itemNavs.forEach(nav => {
+                        nav.classList.remove("--active")
+                        document.querySelector(".item-nav[href*="+ idCurrent + "]").classList.add('--active')
+                    })           
+                }
+            }
+        }
+        )
+    })
+}
+scrollSection()
+
+
+
 // lib
 // // slider flickity
 function handleSlider () {
@@ -290,61 +391,89 @@ function handleSlider () {
             cellAlign: 'left',
             contain: true,
             draggable: '>1',
-            prevNextButtons: true,
+            prevNextButtons: false,
             wrapAround: true,
-            pageDots: true,
-            groupCells: 1,
-            freeScroll: false,
-            lazyLoad: 3
+            on: {
+                ready: function () {
+                    console.log("ready")
+                    handleDotted()
+                    getTotalPage()
+                },
+                change: function(index) {
+                    
+                    handlePaging(index)
+                }
+            }
         }
     );
     // control
     let nextBtn = document.querySelector(".--next");
     let preBtn = document.querySelector(".--pre");
     nextBtn.addEventListener('click', function() {
-        console.log("1")
         flktySlider.next(true)
     })
     preBtn.addEventListener('click', function() {
         flktySlider.previous(true)
     })
+    // dotted
+    function handleDotted () {
+        let dotted = document.querySelector('.flickity-page-dots'),
+            heroPage = document.querySelector('.hero__bottom-paging')
+            heroPage.appendChild(dotted)
+    }
+    // paging
+    function handlePaging(index) {
+        let numberCur = document.querySelector(".number__current");
+            numberCur.innerHTML= (index+1).toString().padStart(2, "0");                
+    }
+    // total page
+    function getTotalPage () {
+    const numberTotal = document.querySelector(".number__total"); 
+    const quantitySlider = document.querySelectorAll(".hero__slider-item").length;
+    numberTotal.innerHTML = `/${quantitySlider.toString().padStart(2, "0")}`
+    }
+    
 }
 handleSlider()
 
 
-// fancybox
+// Gallery fancybox
 
-    // Fancybox.bind("[data-fancybox = gallery]", {
-    //     // Your custom options
-    //     infinity: false,
-    //     keyboard: {
-    //         Escape: 'close',
-    //         Delete: 'close',
-    //         Backspace: 'close',
-    //         ArrowUp: 'next',
-    //         ArrowDown: 'prev',
-    //         ArrowLeft: 'prev',
-    //         ArrowRight: 'next'
-    //     }
-    // })
+function handleGallery () {
+    Fancybox.bind("[data-fancybox]", {
+      // Your custom options
+      infinite: true
+    });
+}
+handleGallery();
 
-// carousel
+// Carousel
 function handleCarousel () {
-    var carousel = document.querySelector('.carousel')
+    var carouselImg = document.querySelector('.carousel__img')
     var flktyCarousel = new Flickity(
-        carousel,
+        carouselImg,
         {
             cellAlign: 'left',
             contain: true,
             draggable: '>1',
-            accessibility: true,
             prevNextButtons: false,
             wrapAround: true,
             pageDots: false,
             freeScroll: true,
-            lazyLoad: 3
+            accessibility: true,
         }
     );
+
+
+    function handleProgressCarousel () {
+        const progressBar = document.querySelector('.carousel__progress-inner')
+        flktyCarousel.on("scroll", function(percent) {
+            widthInner = (Math.max (0, Math.min(1,percent))) * 100
+            // console.log(widthInner)
+            progressBar.style.width = `${widthInner}%`
+        })
+    }
+    handleProgressCarousel()
 }
 
 // load => handleCarousel, handleSlider
@@ -352,14 +481,6 @@ window.addEventListener('load', function() {
     handleCarousel()
 })
 
-// click menu header
-function handleMenu () {
-    const itemMenus = document.querySelectorAll('.header__menu li')
-    itemMenus.forEach(item => item.addEventListener('click', function() {
-        itemMenus.forEach(item => item.classList.remove('--active'))
-        item.classList.add('--active')
-    }))
-}
-handleMenu()
+
 
 

@@ -23,11 +23,18 @@
         display: flex;
         @include midabs();
 
-        li {      
-            padding: 40px 12px;
-            a{       
+        li {  
+            padding: 0 12px;    
+            a{     
+                color: var(--white-cl);  
                 position: relative;     
-                @include transition(var(--time-transition));   
+                @include transition(var(--time-transition));                 
+            }
+            a.--active {                   
+                color: var(--yellow-cl);   
+            }
+            a.--active:after {
+                @include transform(scaleX(1));
             }
             a:after {
                     content: '';
@@ -37,9 +44,9 @@
                     bottom: -4px;
                     left: 0;
                     width: 100%;
-                    transform: scaleX(0);
-                    transform-origin: left;
-                    @include transition(var(--time-transition));
+                    @include transform(scaleX(0));
+                    @include transform-origin(right);
+                    @include transition(transform var(--time-transition));
             }            
         }
 
@@ -47,18 +54,11 @@
             color: var(--yellow-cl);
         }
         li:hover a:after {
-                    transform: scaleX(1);
-                    transform-origin: right;
+                    @include transform(scaleX(1));
+                    @include transform-origin(left);
             }
         
-        .--active {
-            a {
-                color: var(--yellow-cl);
-            }
-            a:after {
-                transform: scaleX(1);
-            }
-        }
+        
     }
 
     &__right {
@@ -134,7 +134,7 @@
 // Responsive Tablet
 @include sm {
     .header {
-        &__logo.show {
+        &__logo.hidden {
             visibility: hidden;
         }
         &__menu {
@@ -144,7 +144,7 @@
         &__right {
             display: flex;
             gap: 26px;
-            &-lang.show {
+            &-lang.hidden {
                     visibility: hidden; 
             }
             &-btnmenu {

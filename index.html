@@ -23,9 +23,6 @@
     <meta property="og:description" content="" />
     <meta property="og:image" content="" />
 
-    <link rel="stylesheet" href="./dest/style.min.css" />
-    <link rel="stylesheet" href="./dest/fonts.css" />
-
     <!-- Loading css -->
     <style>
       .loading {
@@ -67,21 +64,13 @@
         letter-spacing: 0.15rem;
         color: #ffffff;
       }
-
-      @keyframes loading {
-        0% {
-          width: 0%;
-        }
-        100% {
-          width: 100%;
-        }
-      }
     </style>
 
-    <script></script>
+    <link rel="stylesheet" href="./dest/style.min.css" />
+    <link rel="stylesheet" href="./dest/fonts.css" />
   </head>
 
-  <body>
+  <body class="--disable-body-scroll">
     <!-- loading -->
     <div class="loading">
       <div class="loading__outer">
@@ -94,35 +83,36 @@
     <!-- cursor mouse -->
     <div class="cursor"></div>
     <!-- header -->
-    <header class="header">
+    <header class="header" id="header">
       <div class="container-fluid">
-        <a class="header__logo" href="./">
+        <a class="header__logo --hover" href="./">
           <img src="./img/logo-wooder.svg" alt="logo" />
         </a>
 
         <ul class="header__menu">
-          <li class="--active">
-            <a class="btn --while-text" href="#">home</a>
+          <li>
+            <a class="btn item-menu --active --hover" href="#home">home</a>
           </li>
-          <li><a class="btn --while-text" href="#product">products</a></li>
-          <li><a class="btn --while-text" href="#about">about</a></li>
-          <li><a class="btn --while-text" href="#gallery">gallery</a></li>
-          <li><a class="btn --while-text" href="#news">news</a></li>
+          <li><a class="btn item-menu --hover" href="#product">products</a></li>
+          <li><a class="btn item-menu --hover" href="#videos">videos</a></li>
+          <li><a class="btn item-menu --hover" href="#about">about</a></li>
+          <li><a class="btn item-menu --hover" href="#gallery">gallery</a></li>
+          <li><a class="btn item-menu --hover" href="#news">news</a></li>
         </ul>
 
         <div class="header__right">
           <div class="header__right-lang">
-            <div class="header__right-lang-current">
+            <div class="header__right-lang-current --hover">
               <span class="btn --while-text">EN</span>
               <img src="./img/icon-dropdown.svg" alt="" class="dropdown" />
             </div>
             <ul class="header__right-lang-select" id="listLang">
-              <li class="btn --while-text">vi</li>
-              <li class="btn --while-text">jp</li>
-              <li class="btn --while-text">au</li>
+              <li class="btn --while-text --hover">vi</li>
+              <li class="btn --while-text --hover">jp</li>
+              <li class="btn --while-text --hover">au</li>
             </ul>
           </div>
-          <div class="header__right-btnmenu">
+          <div class="header__right-btnmenu --hover">
             <span class="hambergur"></span>
           </div>
         </div>
@@ -131,33 +121,39 @@
     <!-- nav -->
     <nav class="nav" id="">
       <ul class="nav__menu">
-        <li class="--active">
-          <a class="btn --while-text" href="#">home</a>
+        <li>
+          <a class="btn item-nav --active --hover" href="#home">home</a>
         </li>
         <li>
-          <a class="btn --while-text" href="#product">products</a>
+          <a class="btn item-nav --hover" href="#product">products</a>
         </li>
         <li>
-          <a class="btn --while-text" href="#about">about</a>
+          <a class="btn item-nav --hover" href="#videos">videos</a>
         </li>
         <li>
-          <a class="btn --while-text" href="#gallery">gallery</a>
+          <a class="btn item-nav --hover" href="#about">about</a>
         </li>
         <li>
-          <a class="btn --while-text" href="#news">news</a>
+          <a class="btn item-nav --hover" href="#gallery">gallery</a>
+        </li>
+        <li>
+          <a class="btn item-nav --hover" href="#news">news</a>
         </li>
       </ul>
     </nav>
     <!-- main -->
     <main>
       <!-- sc slider -->
-      <section class="hero">
+      <section class="hero" id="home">
         <!-- <div class="hero__wrap-slider"> -->
         <div class="hero__slider" data-flickity>
           <div class="hero__slider-item">
             <div class="textbox">
               <h2 class="heading --lv1">Wooder</h2>
-              <a href="#" class="btn btn-while --while-text" id="scroll-to"
+              <a
+                href="#"
+                class="btn btn-while --while-text --hover"
+                id="scroll-to"
                 >Learn more <img src="./img/icon-arrow-right-white.svg" alt="#"
               /></a>
             </div>
@@ -169,7 +165,7 @@
           <div class="hero__slider-item">
             <div class="textbox">
               <h2 class="heading --lv1">Furniture</h2>
-              <a href="#" class="btn btn-while --while-text"
+              <a href="#" class="btn btn-while --while-text --hover"
                 >Learn more <img src="./img/icon-arrow-right-white.svg" alt="#"
               /></a>
             </div>
@@ -184,7 +180,7 @@
           <div class="hero__slider-item">
             <div class="textbox">
               <h2 class="heading --lv1">Decor</h2>
-              <a href="#" class="btn btn-while --while-text"
+              <a href="#" class="btn btn-while --while-text --hover"
                 >Learn more <img src="./img/icon-arrow-right-white.svg" alt="#"
               /></a>
             </div>
@@ -205,21 +201,21 @@
                 <span class="number__current">01</span>
                 <span class="number__total">/03</span>
               </div>
-              <ol class="dotted">
+              <!-- <ol class="dotted">
                 <li class="dotted__item --active" data-index="1"></li>
                 <li class="dotted__item" data-index="2"></li>
                 <li class="dotted__item" data-index="3"></li>
-              </ol>
+              </ol> -->
             </div>
             <div class="hero__bottom-mouse">
               <img src="./img/icon-mouse.svg" alt="#" class="mouse" />
               <img src="./img/icon-arrow-down.svg" alt="#" class="arrowdown" />
             </div>
             <div class="hero__bottom-controls">
-              <div class="ctr --pre">
+              <div class="ctr --pre --hover">
                 <img src="./img/icon-arrow-next.svg" alt="#" />
               </div>
-              <div class="ctr --next">
+              <div class="ctr --next --hover">
                 <img src="./img/icon-arrow-next.svg" alt="#" />
               </div>
             </div>
@@ -239,7 +235,7 @@
                 useless in their original intent. By creating new pieces made
                 one rerclaimed barnwood
               </p>
-              <a href="#" class="btn btn-learn">
+              <a href="#" class="btn btn-learn --hover">
                 learn more
                 <img
                   src="./img/icon-arrow-right.svg"
@@ -259,7 +255,7 @@
                 Architect,Interior designer, contractor which is suitable your
                 premises.
               </p>
-              <a href="#" class="btn btn-learn">
+              <a href="#" class="btn btn-learn --hover">
                 learn more
                 <img
                   src="./img/icon-arrow-right.svg"
@@ -272,7 +268,7 @@
         </div>
       </section>
       <!-- sc quality -->
-      <section class="quality --ptb">
+      <section class="quality --ptb" id="videos">
         <div class="container">
           <div class="textbox">
             <h2 class="textbox-title heading --lv2">wooder – is quality</h2>
@@ -286,7 +282,7 @@
           <div class="quality__list">
             <!-- item1 -->
             <div class="quality__list-item">
-              <div class="item-circle">
+              <div class="item-circle --hover">
                 <img
                   src="./img/icon-quality-play.svg"
                   alt="#"
@@ -300,7 +296,7 @@
             </div>
             <!-- item2 -->
             <div class="quality__list-item">
-              <div class="item-circle">
+              <div class="item-circle --hover">
                 <img
                   src="./img/icon-quality-play.svg"
                   alt="#"
@@ -314,7 +310,7 @@
             </div>
             <!-- item3 -->
             <div class="quality__list-item">
-              <div class="item-circle">
+              <div class="item-circle --hover">
                 <img
                   src="./img/icon-quality-play.svg"
                   alt="#"
@@ -345,7 +341,7 @@
               barnwood
             </p>
             <div
-              class="btn btn-while --while-text"
+              class="btn btn-while --while-text --hover"
               id="icon-play"
               data-videoid="YJXkSFOVZZw"
             >
@@ -372,7 +368,7 @@
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
               nisi ut aliquip ex ea commodo consequat.
             </p>
-            <a href="#" class="btn btn-learn">
+            <a href="#" class="btn btn-learn --hover">
               learn more
               <img
                 src="./img/icon-arrow-right.svg"
@@ -398,41 +394,46 @@
             </p>
           </div>
           <div class="gallery__list">
-            <a
-              href="./img/gallery-item1-l.jpg"
-              data-fancybox="gallery"
-              data-caption="Caption #1"
-              class="gallery__list-img"
-              ><img src="./img/gallery-item1.jpg" alt="#"
-            /></a>
-            <a
-              href="./img/gallery-item2-l.jpg"
-              data-fancybox="gallery"
-              data-caption="Caption #1"
-              class="gallery__list-img"
-              ><img src="./img/gallery-item2.jpg" alt="#"
-            /></a>
-            <a
-              href="./img/gallery-item3-l.jpg"
-              data-fancybox="gallery"
-              data-caption="Caption #1"
-              class="gallery__list-img"
-              ><img src="./img/gallery-item3.jpg" alt="#"
-            /></a>
-            <a
-              href="./img/gallery-item4-l.jpg"
-              data-fancybox="gallery"
-              data-caption="Caption #1"
-              class="gallery__list-img"
-              ><img src="./img/gallery-item4.jpg" alt="#"
-            /></a>
-            <a
-              href="./img/gallery-item5-l.jpg"
-              data-fancybox="gallery"
-              data-caption="Caption #1"
-              class="gallery__list-img"
-              ><img src="./img/gallery-item5.jpg" alt="#"
-            /></a>
+            <figure class="figure">
+              <a
+                href="./img/gallery-item1-l.jpg"
+                data-fancybox="images"
+                class="gallery__list-img --hover"
+                ><img src="./img/gallery-item1.jpg" alt="#"
+              /></a>
+            </figure>
+            <figure class="figure">
+              <a
+                href="./img/gallery-item2-l.jpg"
+                data-fancybox="images"
+                class="gallery__list-img --hover"
+                ><img src="./img/gallery-item2.jpg" alt="#"
+              /></a>
+            </figure>
+            <figure class="figure">
+              <a
+                href="./img/gallery-item3-l.jpg"
+                data-fancybox="images"
+                class="gallery__list-img --hover"
+                ><img src="./img/gallery-item3.jpg" alt="#"
+              /></a>
+            </figure>
+            <figure class="figure">
+              <a
+                href="./img/gallery-item4-l.jpg"
+                data-fancybox="images"
+                class="gallery__list-img --hover"
+                ><img src="./img/gallery-item4.jpg" alt="#"
+              /></a>
+            </figure>
+            <figure class="figure">
+              <a
+                href="./img/gallery-item5-l.jpg"
+                data-fancybox="images"
+                class="gallery__list-img --hover"
+                ><img src="./img/gallery-item5.jpg" alt="#"
+              /></a>
+            </figure>
           </div>
         </div>
       </section>
@@ -447,29 +448,20 @@
             </p>
           </div>
           <div class="news__tabs">
-            <div class="news__tabs-tab --active" data-tab="1">All</div>
-            <div class="news__tabs-tab" data-tab="2">technology</div>
-            <div class="news__tabs-tab" data-tab="3">fashion</div>
-            <div class="news__tabs-tab" data-tab="3">fashion</div>
-            <div class="news__tabs-tab" data-tab="3">fashion</div>
-            <div class="news__tabs-tab" data-tab="3">fashion</div>
-            <div class="news__tabs-tab" data-tab="3">fashion</div>
-            <div class="news__tabs-tab" data-tab="3">fashion</div>
-            <div class="news__tabs-tab" data-tab="3">fashion</div>
-            <div class="news__tabs-tab" data-tab="3">fashion</div>
-            <div class="news__tabs-tab" data-tab="3">fashion</div>
-            <div class="news__tabs-tab" data-tab="3">fashion</div>
+            <div class="news__tabs-tab --active --hover" data-tab="1">All</div>
+            <div class="news__tabs-tab --hover" data-tab="2">technology</div>
+            <div class="news__tabs-tab --hover" data-tab="3">fashion</div>
           </div>
           <div class="news__wrap">
-            <div class="news__list news__list-1 active">
+            <div class="news__list --active">
               <!-- figure1 -->
               <figure class="news__list-item">
-                <a href="#" class="news-img"
+                <a href="#" class="news-img --hover"
                   ><img src="./img/news-item1.jpg" alt="#"
                 /></a>
                 <div class="news-content">
                   <h3>
-                    <a href="#" class="heading --lv3"
+                    <a href="#" class="heading --lv3 --hover"
                       >Where does it come from?</a
                     >
                   </h3>
@@ -482,12 +474,12 @@
               </figure>
               <!-- figure2 -->
               <figure class="news__list-item">
-                <a href="#" class="news-img"
+                <a href="#" class="news-img --hover"
                   ><img src="./img/news-item2.jpg" alt="#"
                 /></a>
                 <div class="news-content">
                   <h3>
-                    <a class="heading --lv3" href="#"
+                    <a class="heading --lv3 --hover" href="#"
                       >There are many variations of passages</a
                     >
                   </h3>
@@ -500,12 +492,12 @@
               </figure>
               <!-- figure3 -->
               <figure class="news__list-item">
-                <a href="#" class="news-img"
+                <a href="#" class="news-img --hover"
                   ><img src="./img/news-item3.jpg" alt="#"
                 /></a>
                 <div class="news-content">
                   <h3>
-                    <a href="#" class="heading --lv3">
+                    <a href="#" class="heading --lv3 --hover">
                       It is a long established fact that a reader It has roots
                       in a piece of test test test</a
                     >
@@ -518,15 +510,15 @@
                 </div>
               </figure>
             </div>
-            <div class="news__list news__list-2">
+            <div class="news__list">
               <!-- figure1 -->
               <figure class="news__list-item">
-                <a href="#" class="news-img"
+                <a href="#" class="news-img --hover"
                   ><img src="./img/news-item21.jpg" alt="#"
                 /></a>
                 <div class="news-content">
                   <h3>
-                    <a href="#" class="heading --lv3"
+                    <a href="#" class="heading --lv3 --hover"
                       >Where does it come from?</a
                     >
                   </h3>
@@ -539,12 +531,12 @@
               </figure>
               <!-- figure2 -->
               <figure class="news__list-item">
-                <a href="#" class="news-img"
+                <a href="#" class="news-img --hover"
                   ><img src="./img/news-item22.jpg" alt="#"
                 /></a>
                 <div class="news-content">
                   <h3>
-                    <a class="heading --lv3" href="#"
+                    <a class="heading --lv3 --hover" href="#"
                       >There are many variations of passages</a
                     >
                   </h3>
@@ -557,12 +549,12 @@
               </figure>
               <!-- figure3 -->
               <figure class="news__list-item">
-                <a href="#" class="news-img"
+                <a href="#" class="news-img --hover"
                   ><img src="./img/news-item23.jpg" alt="#"
                 /></a>
                 <div class="news-content">
                   <h3>
-                    <a href="#" class="heading --lv3">
+                    <a href="#" class="heading --lv3 --hover">
                       It is a long established fact that a reader It has roots
                       in a piece of test test test</a
                     >
@@ -575,15 +567,15 @@
                 </div>
               </figure>
             </div>
-            <div class="news__list news__list-3">
+            <div class="news__list">
               <!-- figure1 -->
               <figure class="news__list-item">
-                <a href="#" class="news-img"
+                <a href="#" class="news-img --hover"
                   ><img src="./img/news-item31.jpg" alt="#"
                 /></a>
                 <div class="news-content">
                   <h3>
-                    <a href="#" class="heading --lv3"
+                    <a href="#" class="heading --lv3 --hover"
                       >Where does it come from?</a
                     >
                   </h3>
@@ -596,12 +588,12 @@
               </figure>
               <!-- figure2 -->
               <figure class="news__list-item">
-                <a href="#" class="news-img"
+                <a href="#" class="news-img --hover"
                   ><img src="./img/news-item32.jpg" alt="#"
                 /></a>
                 <div class="news-content">
                   <h3>
-                    <a class="heading --lv3" href="#"
+                    <a class="heading --lv3 --hover" href="#"
                       >There are many variations of passages</a
                     >
                   </h3>
@@ -614,12 +606,12 @@
               </figure>
               <!-- figure3 -->
               <figure class="news__list-item">
-                <a href="#" class="news-img"
+                <a href="#" class="news-img --hover"
                   ><img src="./img/news-item33.jpg" alt="#"
                 /></a>
                 <div class="news-content">
                   <h3>
-                    <a href="#" class="heading --lv3">
+                    <a href="#" class="heading --lv3 --hover">
                       It is a long established fact that a reader It has roots
                       in a piece of test test test</a
                     >
@@ -637,16 +629,17 @@
       </section>
       <!-- sc carousel -->
       <section class="carousel --pb">
-        <img data-flickity-lazyload="./img/carousel-1.jpg" alt="#" />
-        <img data-flickity-lazyload="./img/carousel-2.jpg" alt="#" />
-        <img data-flickity-lazyload="./img/carousel-3.jpg" alt="#" />
-        <img data-flickity-lazyload="./img/carousel-4.jpg" alt="#" />
-        <img data-flickity-lazyload="./img/carousel-4.jpg" alt="#" />
-        <img data-flickity-lazyload="./img/carousel-4.jpg" alt="#" />
-        <!-- </div>
+        <div class="carousel__img --hover">
+          <img src="./img/carousel-1.jpg" alt="#" />
+          <img src="./img/carousel-2.jpg" alt="#" />
+          <img src="./img/carousel-3.jpg" alt="#" />
+          <img src="./img/carousel-4.jpg" alt="#" />
+          <img src="./img/carousel-4.jpg" alt="#" />
+          <img src="./img/carousel-4.jpg" alt="#" />
+        </div>
         <div class="carousel__progress">
           <div class="carousel__progress-inner"></div>
-        </div> -->
+        </div>
       </section>
 
       <!-- sc faq -->
@@ -657,7 +650,7 @@
             <div class="accordion">
               <h3 class="accordion__title --lv3">Information</h3>
               <div class="accordion__content">
-                <div class="accordion__content-title">
+                <div class="accordion__content-title --hover">
                   <h4 class="--lv3">
                     CFD Circle có cam kết đầu ra và việc làm 100% không?
                   </h4>
@@ -673,7 +666,7 @@
               </div>
 
               <div class="accordion__content">
-                <div class="accordion__content-title">
+                <div class="accordion__content-title --hover">
                   <h4 class="--lv3">
                     Học tại CFD Circle xong có đi làm hay thực tập được không?
                   </h4>
@@ -687,7 +680,7 @@
               </div>
 
               <div class="accordion__content">
-                <div class="accordion__content-title">
+                <div class="accordion__content-title --hover">
                   <h4 class="--lv3">
                     Đăng ký khóa học và thanh toán như thế nào?
                   </h4>
@@ -705,7 +698,7 @@
                 Register, Payments, promotion
               </h3>
               <div class="accordion__content">
-                <div class="accordion__content-title">
+                <div class="accordion__content-title --hover">
                   <h4 class="--lv3">Làm sao để được giảm giá khoá học?</h4>
                 </div>
                 <div class="accordion__content-text">
@@ -713,7 +706,7 @@
                 </div>
               </div>
               <div class="accordion__content">
-                <div class="accordion__content-title">
+                <div class="accordion__content-title --hover">
                   <h4 class="--lv3">
                     Làm sao để đăng ký làm giảng viên/đối tác hoặc mentor tại
                     CFD Circle
@@ -725,7 +718,7 @@
                 </div>
               </div>
               <div class="accordion__content">
-                <div class="accordion__content-title">
+                <div class="accordion__content-title --hover">
                   <h4 class="--lv3">
                     Học viên hoàn thành khoá học có được cấp chứng chỉ không?
                   </h4>
@@ -745,10 +738,10 @@
       <div class="footer">
         <div class="container">
           <p class="copyright">© 2023 WOODER, CFD Circle</p>
-          <a href="./" class="footer-logo"
+          <a href="./" class="footer-logo --hover"
             ><img src="./img/logo-wooder.svg" alt="#"
           /></a>
-          <div class="back-to-top">
+          <div class="back-to-top --hover">
             <img src="./img/icon-arrow-up.svg" alt="#" />
           </div>
         </div>
