@@ -1,5 +1,5 @@
 
-// loading
+//loading
 function loadPage () {
     function handlePercent (percent) {
         const perNumber = document.querySelector('.loading__number');
@@ -253,6 +253,7 @@ toggleNav();
 // })
 
 
+
 // show popup video
 function showPopup () {
     const body = document.querySelector('body')
@@ -388,11 +389,12 @@ function handleSlider () {
     var flktySlider = new Flickity(
         slider,
         {
-            cellAlign: 'left',
+            cellAlign: 'left',  
             contain: true,
             draggable: '>1',
             prevNextButtons: false,
             wrapAround: true,
+            fade: true,
             on: {
                 ready: function () {
                     console.log("ready")
@@ -461,6 +463,9 @@ function handleCarousel () {
             pageDots: false,
             freeScroll: true,
             accessibility: true,
+            imagesLoaded: true,
+            lazyLoad: 3,
+            
         }
     );
 
